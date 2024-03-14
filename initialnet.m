@@ -5,7 +5,7 @@ function W = initialnet(N, p, R, gamma)
 % density p elsewhere.
 
 NN = round(p*N*(N-1));
-fill = [ones(1,NN), zeros(1,N*(N-1) - NN)];
+fill = [ones(1,NN), zeros(1,N*(N-1) - NN)]; 
 fill = reshape(fill(randperm(N*(N-1))),N,N-1); %fill is an N by N-1 matrix with NN entries that are 1
 
 W1 = zeros(N);

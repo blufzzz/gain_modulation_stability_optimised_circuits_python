@@ -21,12 +21,21 @@ output.param = params; %Output parameters if needed
 
 end
 
+
+
+
+
+
+
 function x_dot = rate_dynamics_ode(t, X, W, param)
 
 % Vector equation governing the neuronal activity
 x_dot = param.over_tau*(-X + W*feval(param.f, X, param));
 
 end
+
+
+
 
 % Gain functions
 function out = f_non_linear(X, param)
@@ -39,6 +48,10 @@ out(I2) = (param.rmax-param.r0)*tanh(param.gains(I2).*X(I2)/(param.rmax-param.r0
 
 end
 
+
+
+
+
 function out = f_final_non_linear(X, param)
 
 param.gains = repmat((param.gains)', length(X),1); %Here we pass all the neuronal activities over times through the gain function so we need to repmat all the gain values
@@ -49,6 +62,9 @@ I2 = logical(1 - I);
 out(I2) = (param.rmax-param.r0)*tanh(param.gains(I2).*X(I2)/(param.rmax-param.r0));
 
 end
+
+
+
 
 function out = f_linear(X, param)
 
